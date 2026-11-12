@@ -1,0 +1,144 @@
+
+<div class="dynamic-faq page-width" id="DynamicFaq-{{ section.id }}">
+  <div class="dynamic-faq__header">
+    <h2>{{ section.settings.heading }}</h2>
+
+    {% if section.settings.subheading != blank %}
+      <p>{{ section.settings.subheading }}</p>
+    {% endif %}
+  </div>
+
+  <div class="dynamic-faq__items">
+    {% for block in section.blocks %}
+      <details class="dynamic-faq__item" {{ block.shopify_attributes }}>
+        <summary class="dynamic-faq__question">
+          <span>{{ block.settings.question }}</span>
+          <span class="dynamic-faq__icon" aria-hidden="true"></span>
+        </summary>
+
+        <div class="dynamic-faq__answer">
+          {{ block.settings.answer }}
+        </div>
+      </details>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  #DynamicFaq-{{ section.id }} {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__header h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__header p {
+    color: #666;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__items {
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__item {
+    border-bottom: 1px solid #ddd;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__question {
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__icon::before {
+    content: "+";
+    font-size: 24px;
+  }
+
+  #DynamicFaq-{{ section.id }} details[open] .dynamic-faq__icon::before {
+    content: "−";
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__answer {
+    padding: 0 10px 20px;
+    color: #555;
+    line-height: 1.7;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dynamic FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section description",
+      "default": "Find answers to your questions about Genius Maker."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How can I place an order?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>You can browse our products, add your preferred items to the cart, and proceed to checkout.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Dynamic FAQ",
+      "blocks": [
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How can I contact customer support?",
+            "answer": "<p>Contact our support team through the contact page.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
