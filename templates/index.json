@@ -343,15 +343,200 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "accordion_row_jedj94": {
+            "accordion_row_wra8zX": {
               "type": "_accordion-row",
+              "name": "t:names.accordion_row",
               "settings": {
-                "heading": "What is the rp?",
+                "heading": "When will I get my order?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
               },
               "blocks": {
+                "text_rPmDW6": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_rPmDW6"
+              ]
+            },
+            "accordion_row_jedj94": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "What is the return policy?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "accordion_nDhWx3": {
+                  "type": "accordion",
+                  "name": "t:names.accordion",
+                  "settings": {
+                    "icon": "caret",
+                    "dividers": true,
+                    "divider_color": "",
+                    "type_preset": "h6",
+                    "background_color": "",
+                    "text_color": "",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_color": "",
+                    "border_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "accordion_row_tPMMxH": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "Return policy",
+                        "open_by_default": true,
+                        "icon": "none",
+                        "width": 20
+                      },
+                      "blocks": {
+                        "text_4EUTYM": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "text_color": "",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_4EUTYM"
+                      ]
+                    },
+                    "accordion_row_n9eFNU": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "Shipping",
+                        "open_by_default": false,
+                        "icon": "none",
+                        "width": 20
+                      },
+                      "blocks": {
+                        "text_nCCwUF": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "text_color": "",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_nCCwUF"
+                      ]
+                    },
+                    "accordion_row_Jjzh7X": {
+                      "type": "_accordion-row",
+                      "settings": {
+                        "heading": "Manufacturing",
+                        "open_by_default": false,
+                        "icon": "none",
+                        "width": 20
+                      },
+                      "blocks": {
+                        "text_jwgz8T": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "text_color": "",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_jwgz8T"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "accordion_row_tPMMxH",
+                    "accordion_row_n9eFNU",
+                    "accordion_row_Jjzh7X"
+                  ]
+                },
                 "text_htrgjw": {
                   "type": "text",
                   "settings": {
@@ -379,6 +564,7 @@
                 }
               },
               "block_order": [
+                "accordion_nDhWx3",
                 "text_htrgjw"
               ]
             },
@@ -546,6 +732,7 @@
             }
           },
           "block_order": [
+            "accordion_row_wra8zX",
             "accordion_row_jedj94",
             "accordion_row_HBPMyb",
             "accordion_row_iC4AaK",
