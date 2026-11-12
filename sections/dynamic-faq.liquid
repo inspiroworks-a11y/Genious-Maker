@@ -1,86 +1,252 @@
 
-<div class="dynamic-faq page-width" id="DynamicFaq-{{ section.id }}">
-  <div class="dynamic-faq__header">
-    <h2>{{ section.settings.heading }}</h2>
+<section id="DynamicFaq-{{ section.id }}" class="dynamic-faq">
+  <div class="dynamic-faq__inner">
 
-    {% if section.settings.subheading != blank %}
-      <p>{{ section.settings.subheading }}</p>
-    {% endif %}
+    <div class="dynamic-faq__header">
+      <span class="dynamic-faq__eyebrow">HELP CENTER</span>
+
+      <h2>{{ section.settings.heading }}</h2>
+
+      {% if section.settings.subheading != blank %}
+        <p>{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    <div class="dynamic-faq__items">
+
+      {% for block in section.blocks %}
+        <details
+          class="dynamic-faq__item"
+          {{ block.shopify_attributes }}
+        >
+          <summary class="dynamic-faq__question">
+            <span>{{ block.settings.question }}</span>
+            <span class="dynamic-faq__icon" aria-hidden="true"></span>
+          </summary>
+
+          <div class="dynamic-faq__answer">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {% endfor %}
+
+    </div>
+
+    <div class="dynamic-faq__footer">
+      <p>Still have questions?</p>
+      <span>We're always happy to help you.</span>
+    </div>
+
   </div>
-
-  <div class="dynamic-faq__items">
-    {% for block in section.blocks %}
-      <details class="dynamic-faq__item" {{ block.shopify_attributes }}>
-        <summary class="dynamic-faq__question">
-          <span>{{ block.settings.question }}</span>
-          <span class="dynamic-faq__icon" aria-hidden="true"></span>
-        </summary>
-
-        <div class="dynamic-faq__answer">
-          {{ block.settings.answer }}
-        </div>
-      </details>
-    {% endfor %}
-  </div>
-</div>
+</section>
 
 <style>
   #DynamicFaq-{{ section.id }} {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    background: #f6f4ff;
+    padding: 75px 20px;
+    width: 100%;
   }
 
-  #DynamicFaq-{{ section.id }} .dynamic-faq__header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  #DynamicFaq-{{ section.id }} .dynamic-faq__header h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
-  }
-
-  #DynamicFaq-{{ section.id }} .dynamic-faq__header p {
-    color: #666;
-  }
-
-  #DynamicFaq-{{ section.id }} .dynamic-faq__items {
-    max-width: 850px;
+  #DynamicFaq-{{ section.id }} .dynamic-faq__inner {
+    max-width: 1000px;
     margin: 0 auto;
   }
 
-  #DynamicFaq-{{ section.id }} .dynamic-faq__item {
-    border-bottom: 1px solid #ddd;
+  /* HEADER */
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__header {
+    text-align: center;
+    margin-bottom: 45px;
   }
 
+  #DynamicFaq-{{ section.id }} .dynamic-faq__eyebrow {
+    display: inline-block;
+    color: #7654c8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__header h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    color: #201a35;
+    line-height: 1.2;
+    margin: 0 0 14px;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__header p {
+    font-size: 16px;
+    color: #777184;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* FAQ CARDS */
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__items {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__item {
+    background: #ffffff;
+    border: 1px solid #eae5f5;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__item:hover {
+    border-color: #c9b7ed;
+    box-shadow: 0 5px 18px rgba(78, 53, 130, 0.07);
+    transform: translateY(-2px);
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__item[open] {
+    border-color: #bba6e8;
+    box-shadow: 0 6px 22px rgba(78, 53, 130, 0.08);
+  }
+
+  /* QUESTION */
+
   #DynamicFaq-{{ section.id }} .dynamic-faq__question {
-    padding: 20px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+    padding: 21px 25px;
     cursor: pointer;
-    font-weight: 600;
     list-style: none;
+    color: #29233b;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
   }
 
   #DynamicFaq-{{ section.id }} .dynamic-faq__question::-webkit-details-marker {
     display: none;
   }
 
-  #DynamicFaq-{{ section.id }} .dynamic-faq__icon::before {
-    content: "+";
-    font-size: 24px;
+  #DynamicFaq-{{ section.id }} .dynamic-faq__question::marker {
+    content: "";
   }
 
-  #DynamicFaq-{{ section.id }} details[open] .dynamic-faq__icon::before {
-    content: "−";
+  /* PLUS / MINUS ICON */
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f1edfb;
+    position: relative;
+    transition: background 0.25s ease,
+                transform 0.25s ease;
   }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__icon::before,
+  #DynamicFaq-{{ section.id }} .dynamic-faq__icon::after {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 2px;
+    background: #7654c8;
+    top: 14px;
+    left: 9.5px;
+    border-radius: 2px;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__icon::after {
+    transform: rotate(90deg);
+    transition: transform 0.25s ease;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__item[open]
+  .dynamic-faq__icon {
+    background: #7654c8;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__item[open]
+  .dynamic-faq__icon::before,
+  #DynamicFaq-{{ section.id }} .dynamic-faq__item[open]
+  .dynamic-faq__icon::after {
+    background: #ffffff;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__item[open]
+  .dynamic-faq__icon::after {
+    transform: rotate(0deg);
+  }
+
+  /* ANSWER */
 
   #DynamicFaq-{{ section.id }} .dynamic-faq__answer {
-    padding: 0 10px 20px;
-    color: #555;
-    line-height: 1.7;
+    padding: 0 25px 23px;
+    color: #777184;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__answer p {
+    margin: 0 0 10px;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* FOOTER */
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #777184;
+    font-size: 14px;
+  }
+
+  #DynamicFaq-{{ section.id }} .dynamic-faq__footer p {
+    color: #29233b;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 0 5px;
+  }
+
+  /* MOBILE RESPONSIVENESS */
+
+  @media screen and (max-width: 600px) {
+    #DynamicFaq-{{ section.id }} {
+      padding: 50px 16px;
+    }
+
+    #DynamicFaq-{{ section.id }} .dynamic-faq__header {
+      margin-bottom: 30px;
+    }
+
+    #DynamicFaq-{{ section.id }} .dynamic-faq__question {
+      padding: 17px 16px;
+      font-size: 14px;
+    }
+
+    #DynamicFaq-{{ section.id }} .dynamic-faq__answer {
+      padding: 0 16px 18px;
+      font-size: 14px;
+    }
+
+    #DynamicFaq-{{ section.id }} .dynamic-faq__icon {
+      width: 27px;
+      height: 27px;
+    }
+
+    #DynamicFaq-{{ section.id }} .dynamic-faq__icon::before,
+    #DynamicFaq-{{ section.id }} .dynamic-faq__icon::after {
+      top: 12.5px;
+      left: 8px;
+    }
   }
 </style>
 
@@ -135,6 +301,13 @@
           "settings": {
             "question": "How can I contact customer support?",
             "answer": "<p>Contact our support team through the contact page.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "<p>Delivery times depend on your location and selected shipping method.</p>"
           }
         }
       ]
