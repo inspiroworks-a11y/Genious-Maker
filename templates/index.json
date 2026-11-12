@@ -97,26 +97,6 @@
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
-        "product_custom_property_ByhGTV": {
-          "type": "product-custom-property",
-          "name": "t:names.product_custom_property",
-          "settings": {
-            "property_heading": "Type{{ closest.collection.metafields.custom.fabric.value }}",
-            "property_description": "{{ closest.collection.metafields.custom.fabric.value }}",
-            "property_key": "Special instructions",
-            "input_type": "text",
-            "max_length": 100,
-            "checkbox_label": "Include gift wrapping",
-            "required": false,
-            "placeholder": "Enter your special instructions",
-            "placeholder_textarea": "Enter your special instructions",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "static-header": {
           "type": "_product-list-content",
           "name": "t:names.header",
@@ -292,9 +272,6 @@
           ]
         }
       },
-      "block_order": [
-        "product_custom_property_ByhGTV"
-      ],
       "name": "t:names.product_list",
       "settings": {
         "collection": "all",
