@@ -953,31 +953,41 @@
   }
    /* center nav code  */
 
-/* OFFTRACK - Center desktop navigation */
+
+/* OFFTRACK - True Centered Navigation */
 
 @media screen and (min-width: 990px) {
 
+  /* Header row becomes the positioning reference */
+  .header__row {
+    position: relative;
+  }
+
+  /* Position navigation at the exact center */
   .header-menu {
-    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
     height: 100%;
+    z-index: 5;
   }
 
   .header-menu__inner {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
   }
 
   .header-menu .menu-list {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .header-menu .overflow-menu {
-    width: 100%;
     align-items: center;
   }
 
@@ -986,32 +996,24 @@
     gap: 12px;
   }
 
-  .header-menu .menu-list__link-title {
-    padding-inline: 12px;
-    transition: color 0.25s ease;
-  }
-
-}
-
-/* OFFTRACK navigation styling */
-
-@media screen and (min-width: 990px) {
-
+  /* Navigation typography */
   .header-menu .menu-list__link {
     text-transform: uppercase;
     letter-spacing: 1.2px;
     font-weight: 600;
   }
 
+  /* Hover effect */
   .header-menu .menu-list__link:hover {
     color: #E5A000;
   }
 
   .header-menu .menu-list__link-title {
-    position: relative;
+    padding-inline: 12px;
+    transition: color 0.25s ease;
   }
-
 }
+
 
 {% endstylesheet %}
 
