@@ -158,7 +158,7 @@
         "carousel_on_mobile": false,
         "columns": 4,
         "mobile_columns": "2",
-        "columns_gap": 10,
+        "columns_gap": 15,
         "bento_gap": 8,
         "rows_gap": 10,
         "max_collections": 4,
@@ -167,8 +167,8 @@
         "section_width": "page-width",
         "gap": 10,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 10,
-        "padding-block-end": 45
+        "padding-block-start": 25,
+        "padding-block-end": 25
       }
     }
   },
