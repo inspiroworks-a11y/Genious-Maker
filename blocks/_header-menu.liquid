@@ -951,6 +951,68 @@
   .menu-list__list-item:not(:has([aria-expanded='true'])) > .menu-list__submenu product-component {
     display: none;
   }
+   /* center nav code  */
+
+/* OFFTRACK - Center desktop navigation */
+
+@media screen and (min-width: 990px) {
+
+  .header-menu {
+    width: 100%;
+    height: 100%;
+  }
+
+  .header-menu__inner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-menu .menu-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-menu .overflow-menu {
+    width: 100%;
+    align-items: center;
+  }
+
+  .header-menu .overflow-menu::part(list) {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .header-menu .menu-list__link-title {
+    padding-inline: 12px;
+    transition: color 0.25s ease;
+  }
+
+}
+
+/* OFFTRACK navigation styling */
+
+@media screen and (min-width: 990px) {
+
+  .header-menu .menu-list__link {
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+  }
+
+  .header-menu .menu-list__link:hover {
+    color: #E5A000;
+  }
+
+  .header-menu .menu-list__link-title {
+    position: relative;
+  }
+
+}
+
 {% endstylesheet %}
 
 {% schema %}
