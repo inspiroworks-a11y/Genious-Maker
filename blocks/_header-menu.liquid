@@ -1015,9 +1015,31 @@
 }
 
  /* Added for even card order  */
- .card__media .media img {
-  object-fit: contain;
-  background-color: #f6f6f6; /* Matches your T-shirt card background */
+ /* Forces every product card container to stretch equally in a row */
+.grid__item, .product-grid-item {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* Forces the card inner wrapper to fill height and space elements */
+.card-wrapper, .card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  justify-content: space-between !important;
+}
+
+/* Enforces a fixed, uniform height for all product images */
+.card__media, .card__inner {
+  height: 260px !important;
+  max-height: 260px !important;
+}
+
+.card__media img, .card__inner img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Crops images uniformly to fit the box */
 }
 
 {% endstylesheet %}
