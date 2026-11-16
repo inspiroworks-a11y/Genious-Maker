@@ -1,5 +1,5 @@
-# OS generated files #
-######################
+
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -7,12 +7,27 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Dependencies
 node_modules/
+
+# Shopify CLI
+.shopify/
 .sf/
 
-# Shopify CLI files
-.shopify/
-
-## Release files
-release
+# Release files
+release/
 *.zip
+
+# Local environment files
+.env
+.env.*
+
+# Logs
+*.log
+
+# Editor files
+.vscode/
+
+# Specific One
+catalog.json
