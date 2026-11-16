@@ -951,6 +951,69 @@
   .menu-list__list-item:not(:has([aria-expanded='true'])) > .menu-list__submenu product-component {
     display: none;
   }
+   /* center nav code  */
+
+
+/* OFFTRACK - True Centered Navigation */
+
+@media screen and (min-width: 990px) {
+
+  /* Header row becomes the positioning reference */
+  .header__row {
+    position: relative;
+  }
+
+  /* Position navigation at the exact center */
+  .header-menu {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    height: 100%;
+    z-index: 5;
+  }
+
+  .header-menu__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .header-menu .menu-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-menu .overflow-menu {
+    align-items: center;
+  }
+
+  .header-menu .overflow-menu::part(list) {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Navigation typography */
+  .header-menu .menu-list__link {
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+  }
+
+  /* Hover effect */
+  .header-menu .menu-list__link:hover {
+    color: #E5A000;
+  }
+
+  .header-menu .menu-list__link-title {
+    padding-inline: 12px;
+    transition: color 0.25s ease;
+  }
+}
+
 {% endstylesheet %}
 
 {% schema %}
