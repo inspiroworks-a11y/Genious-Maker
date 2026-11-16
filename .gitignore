@@ -29,5 +29,8 @@ release/
 # Editor files
 .vscode/
 
-# Specific One
-catalog.json
+# Ignore catalog files
+**/catalog.json
+
+# Ignore Salesforce CLI files
+.sf/
