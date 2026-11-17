@@ -137,6 +137,17 @@
     </a>
   {% endif %}
 
+  <!-- Wishlist navigation icon -->
+  <a
+    href="/pages/wishlist"
+    class="header-actions__action button-unstyled wishlist-nav-link"
+    aria-label="View wishlist"
+    title="Wishlist"
+  >
+    <span class="wishlist-nav-icon" aria-hidden="true">♡</span>
+    <span class="wishlist-nav-count" aria-live="polite"></span>
+  </a>
+
   <span
     ref="liveRegion"
     class="visually-hidden"
@@ -330,4 +341,46 @@
       margin-inline-start: 0;
     }
   }
+
+    /* Wishlist navbar icon */
+  .wishlist-nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    color: var(--color-foreground);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .wishlist-nav-icon {
+    font-size: 25px;
+    line-height: 1;
+    transition: color 0.2s ease;
+  }
+
+  .wishlist-nav-link:hover .wishlist-nav-icon {
+    color: #e53935;
+  }
+
+  .wishlist-nav-count:not(:empty) {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #e53935;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  
 {% endstylesheet %}

@@ -64,4 +64,219 @@
       display: none;
     }
   }
+
+
+/* =========================================
+   WISHLIST HEART ICON ON PRODUCT IMAGE
+   ========================================= */
+
+.card-wrapper,
+.product-card {
+  position: relative;
+}
+
+.card-wrapper .card__inner,
+.product-card .card__inner {
+  position: relative;
+}
+
+/* Heart button */
+.card-wrapper .card-heart-icon,
+.product-card .card-heart-icon {
+  position: absolute !important;
+  top: 12px;
+  right: 12px;
+  bottom: auto;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff;
+  color: #e0245e;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+  z-index: 20;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+}
+
+/* Show heart on image hover */
+.card-wrapper:hover .card-heart-icon,
+.product-card:hover .card-heart-icon {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Heart SVG */
+.card-heart-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* Heart hover effect */
+.card-heart-icon:hover {
+  background: #e0245e;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Always show on touch devices */
+@media (hover: none) {
+  .card-wrapper .card-heart-icon,
+  .product-card .card-heart-icon {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+
+/* =========================================
+   WISHLIST HEART ICON ON PRODUCT IMAGE
+   ========================================= */
+
+.product-grid__card {
+  position: relative;
+}
+
+/* Default hidden state */
+.product-grid__card .card-heart-icon {
+  position: absolute !important;
+  top: 12px;
+  right: 12px;
+  z-index: 30;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #e0245e;
+
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+}
+
+/* Heart icon */
+.product-grid__card .wishlist-icon {
+  font-size: 27px;
+  line-height: 1;
+}
+
+/* Show heart on product card hover */
+.product-grid__card:hover .card-heart-icon {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Heart hover effect */
+.product-grid__card .card-heart-icon:hover {
+  background: #e0245e;
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+/* Mobile visibility */
+@media (hover: none) {
+  .product-grid__card .card-heart-icon {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+/* =========================================
+   PERFECTLY ROUND WISHLIST HEART BUTTON
+   ========================================= */
+
+.product-grid__card .card-heart-icon {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+
+  width: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+
+  aspect-ratio: 1 / 1 !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: #ffffff;
+  color: #e0245e;
+
+  line-height: 1 !important;
+  flex: 0 0 40px !important;
+
+  z-index: 30;
+}
+
+/* Heart icon alignment */
+.product-grid__card .card-heart-icon .wishlist-icon {
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hover effect */
+.product-grid__card .card-heart-icon:hover {
+  background: #e0245e;
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* Mobile size */
+@media screen and (max-width: 749px) {
+  .product-grid__card .card-heart-icon {
+    width: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    flex-basis: 36px !important;
+  }
+}
+
 {% endstylesheet %}

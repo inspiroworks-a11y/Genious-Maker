@@ -7,7 +7,36 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+{  "404": {
+    "title": "Página no encontrada",
+    "not_found": "Lo sentimos, no se pudo encontrar la página que buscas.",
+    "back_to_shopping": "Seguir comprando"
+  },
+  "blog": {
+    "article_metadata_html": "{{ date }} por {{ author }}",
+    "article_comments": "Comentarios",
+    "comment_form_title": "Dejar un comentario",
+    "comment_form_name": "Nombre",
+    "comment_form_email": "Correo electrónico",
+    "comment_form_body": "Comentario",
+    "comment_form_submit": "Publicar comentario"
+  },
+  "cart": {
+    "title": "Tu carrito",
+    "remove": "Eliminar",
+    "update": "Actualizar",
+    "checkout": "Pagar"
+  },
+  "collections": {
+    "title": "Colecciones"
+  },
+  "search": {
+    "title": "Buscar",
+    "placeholder": "Buscar productos",
+    "submit": "Buscar",
+    "no_results_html": "No se encontraron resultados para {{ terms }}.",
+    "results_for_html": "Se muestran {{ count }} resultados para {{ terms }}."
+  },
   "blocks": {
     "load_video": "Cargar video: {{ description }}",
     "sold_out": "Agotado",

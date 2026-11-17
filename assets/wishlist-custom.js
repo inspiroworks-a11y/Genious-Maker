@@ -3,44 +3,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const STORAGE_KEY = 'wishlist';
 
+  /**
+   * @type {number | null}
+   */
+  let toastTimer = null;
+
   // Get wishlist from localStorage safely
   function getWishlist() {
-  try {
-    const savedWishlist = JSON.parse(
-      localStorage.getItem(STORAGE_KEY) || '[]'
-    );
+    try {
+      const savedWishlist = JSON.parse(
+        localStorage.getItem(STORAGE_KEY) || '[]'
+      );
 
-    return Array.isArray(savedWishlist) ? savedWishlist : [];
+      return Array.isArray(savedWishlist) ? savedWishlist : [];
 
-  } catch (error) {
-    console.error('Error reading wishlist:', error);
-    return [];
+    } catch (error) {
+      console.error('Error reading wishlist:', error);
+      return [];
+    }
   }
-}
 
-  // Save wishlist
   /**
- * Save wishlist to localStorage
- * @param {string[]} wishlist // describing type explecitly.....
- */
-function saveWishlist(wishlist) {
-  try {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(wishlist)
-    );
-  } catch (error) {
-    console.error('Error saving wishlist:', error);
+   * Save wishlist to localStorage
+   * @param {string[]} wishlist - Array of product handles
+   */
+  function saveWishlist(wishlist) {
+    try {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(wishlist)
+      );
+
+    } catch (error) {
+      console.error('Error saving wishlist:', error);
+    }
   }
-}
 
-/**
- * Update wishlist button appearance
- * @param {HTMLButtonElement} button - Wishlist button element
- * @param {string[]} wishlist - Array of saved product handles
- */
+  /**
+   * Show wishlist toast notification
+   * @param {string} message - Toast notification message
+   */
+  function showWishlistToast(message) {
+    const toast = document.getElementById('wishlist-toast');
 
-  // Update wishlist button appearance
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    if (toastTimer !== null) {
+      clearTimeout(toastTimer);
+    }
+
+    toastTimer = window.setTimeout(() => {
+      toast.classList.remove('show');
+      toastTimer = null;
+    }, 3000);
+  }
+
+  /**
+   * Update wishlist button appearance
+   * @param {HTMLButtonElement} button - Wishlist button element
+   * @param {string[]} wishlist - Array of saved product handles
+   */
   function updateButton(button, wishlist) {
 
     const handle = button.dataset.productHandle;
@@ -48,91 +73,104 @@ function saveWishlist(wishlist) {
     if (!handle) return;
 
     const icon = button.querySelector('.wishlist-icon');
-    const text = button.querySelector('.wishlist-text');
 
     const isWishlisted = wishlist.includes(handle);
 
-    // Update icon
+    // Update heart icon
     if (icon instanceof HTMLElement) {
-    icon.textContent = isWishlisted ? '♥' : '♡';
-    icon.style.color = isWishlisted ? 'red' : '';
-  }
-
-    // Update button text
-    if (text instanceof HTMLElement) {
-      text.textContent = isWishlisted
-        ? 'Remove from Wishlist'
-        : 'Add to Wishlist';
+      icon.textContent = isWishlisted ? '♥' : '♡';
+      icon.style.color = isWishlisted ? 'red' : '';
     }
 
-    // Accessibility
+    // Update accessibility
     button.setAttribute('aria-pressed', String(isWishlisted));
+
+    button.setAttribute(
+      'aria-label',
+      `${isWishlisted ? 'Remove' : 'Add'} ${handle} ${isWishlisted ? 'from' : 'to'} wishlist`
+    );
+
+    // Update button styling
     button.classList.toggle('is-wishlisted', isWishlisted);
   }
 
-  
-// Update all wishlist buttons on the page
-function updateAllButtons() {
+  // Update all wishlist buttons and navbar count
+  function updateAllButtons() {
 
-  const wishlist = getWishlist();
+    const wishlist = getWishlist();
 
-  document.querySelectorAll('.wishlist-toggle-btn').forEach(button => {
+    // Update product wishlist buttons
+    document.querySelectorAll('.wishlist-toggle-btn').forEach(button => {
 
-    if (button instanceof HTMLButtonElement) {
-      updateButton(button, wishlist);
-    }
+      if (button instanceof HTMLButtonElement) {
+        updateButton(button, wishlist);
+      }
 
-  });
-}
+    });
 
+    // Update navbar wishlist count
+    document.querySelectorAll('.wishlist-nav-count').forEach(count => {
+
+      count.textContent = wishlist.length > 0
+        ? String(wishlist.length)
+        : '';
+
+    });
+  }
 
   // Initialize wishlist buttons
   updateAllButtons();
 
   // Event delegation: supports dynamically loaded product cards
-  
-document.addEventListener('click', (event) => {
+  document.addEventListener('click', (event) => {
 
-  // Check whether the event target is an HTML element
-  if (!(event.target instanceof Element)) return;
+    if (!(event.target instanceof Element)) return;
 
-  // Find the closest wishlist button
-  const button = event.target.closest('.wishlist-toggle-btn');
+    // Find the closest wishlist button
+    const button = event.target.closest('.wishlist-toggle-btn');
 
-  // Verify that the selected element is a button
-  if (!(button instanceof HTMLButtonElement)) return;
+    if (!(button instanceof HTMLButtonElement)) return;
 
-  const handle = button.dataset.productHandle;
+    // Prevent product card navigation
+    event.preventDefault();
+    event.stopPropagation();
 
-  if (!handle) return;
+    const handle = button.dataset.productHandle;
 
-  let wishlist = getWishlist();
+    if (!handle) return;
 
-  if (wishlist.includes(handle)) {
+    let wishlist = getWishlist();
 
-    // Remove product
-    wishlist = wishlist.filter(item => item !== handle);
+    const isWishlisted = wishlist.includes(handle);
 
-  } else {
+    if (isWishlisted) {
 
-    // Add product without duplicates
-    wishlist.push(handle);
+      // Remove product
+      wishlist = wishlist.filter(item => item !== handle);
 
-  }
+      showWishlistToast('Removed from wishlist!');
 
-  // Save updated wishlist
-  saveWishlist(wishlist);
+    } else {
 
-  // Update all wishlist buttons
-  updateAllButtons();
+      // Add product without duplicates
+      wishlist.push(handle);
 
-});
+      showWishlistToast('Successfully added to wishlist!');
 
+    }
+
+    // Save updated wishlist
+    saveWishlist(wishlist);
+
+    // Update all wishlist buttons
+    updateAllButtons();
+
+  });
 
   // Sync wishlist when localStorage changes in another browser tab
   window.addEventListener('storage', (event) => {
 
-    if (event.key === STORAGE_KEY) {
+    if (event.key === STORAGE_KEY || event.key === null) {
       updateAllButtons();
     }
 

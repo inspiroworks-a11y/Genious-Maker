@@ -158,7 +158,8 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
-    {% comment %} {{ 'wishlist-custom.js' | asset_url | script_tag:defer:true }} {% endcomment %}
+    {% comment %} Wishlist-custom js file  {% endcomment %}
      <script src="{{ 'wishlist-custom.js' | asset_url }}" defer></script>
+     <div id="wishlist-toast" class="wishlist-toast" role="status" aria-live="polite"></div>
   </body>
 </html>

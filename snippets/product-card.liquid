@@ -112,7 +112,22 @@
       {% if block_settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block_settings.padding-block-end | times: 0.7}}px);{% endif %}
     "
   >
-    {{ children }}
+        {{ children }}
+
+    
+{% unless onboarding %}
+  <button
+    type="button"
+    class="wishlist-toggle-btn card-heart-icon"
+    data-product-handle="{{ product.handle }}"
+    aria-pressed="false"
+    aria-label="Add {{ product.title | escape }} to wishlist"
+  >
+    <span class="wishlist-icon" aria-hidden="true">♡</span>
+  </button>
+{% endunless %}
+
+
   </div>
 </product-card>
 

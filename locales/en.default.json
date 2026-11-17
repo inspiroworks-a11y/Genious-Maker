@@ -8,6 +8,36 @@
  * ------------------------------------------------------------
  */
 {
+  "404": {
+    "title": "Page not found",
+    "not_found": "Sorry, the page you are looking for could not be found.",
+    "back_to_shopping": "Continue shopping"
+  },
+  "blog": {
+    "article_metadata_html": "{{ date }} by {{ author }}",
+    "article_comments": "Comments",
+    "comment_form_title": "Leave a comment",
+    "comment_form_name": "Name",
+    "comment_form_email": "Email",
+    "comment_form_body": "Comment",
+    "comment_form_submit": "Post comment"
+  },
+  "cart": {
+    "title": "Your cart",
+    "remove": "Remove",
+    "update": "Update",
+    "checkout": "Checkout"
+  },
+  "collections": {
+    "title": "Collections"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search products",
+    "submit": "Search",
+    "no_results_html": "No results found for {{ terms }}.",
+    "results_for_html": "Showing {{ count }} results for {{ terms }}."
+  },
   "accessibility": {
     "account": "Account",
     "active_filters": "Active filters:",
@@ -368,7 +398,7 @@
     "blog_post_date": "Date",
     "blog_post_description": "An excerpt of your blog post's content"
   },
-  "products": {
+ "products": {
     "product": {
       "add_to_cart": "Add to cart",
       "adding_to_cart": "Adding...",
