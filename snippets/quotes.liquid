@@ -1,3 +1,12 @@
+{% doc %}
+  Renders a quote-request dialog for a product.
+
+  @param {product} product - The product for which a quote is requested.
+
+  @example
+  {% render 'quotes', product: product %}
+{% enddoc %}
+
 {%- if product != blank -%}
   {%- assign quote_variant = product.selected_or_first_available_variant -%}
   {%- assign quote_form_id = 'QuoteContactForm-' | append: section.id | append: '-' | append: product.id -%}

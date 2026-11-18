@@ -1,46 +1,34 @@
+function initializeQuotes() {
+  if (document.documentElement.dataset.quotesInitialized === 'true') {
+    reopenSubmittedQuoteModals();
+    return;
+  }
 
-document.addEventListener('DOMContentLoaded', function () {
+  document.documentElement.dataset.quotesInitialized = 'true';
 
-  // Handle popup interactions
   document.addEventListener('click', function (event) {
-
-    // Make sure the click target is an HTML element
     const target = event.target;
 
     if (!(target instanceof Element)) {
       return;
     }
 
-    // =====================================
-    // OPEN QUOTE POPUP
-    // =====================================
-
     const openButton = target.closest('[data-quote-open]');
 
     if (openButton) {
-
       const quotesContainer = openButton.closest('[data-quotes]');
-
-      if (!quotesContainer) {
-        return;
-      }
+      if (!quotesContainer) return;
 
       const modal = quotesContainer.querySelector('[data-quote-modal]');
-
-      // Ensure the selected element is a dialog
       if (!(modal instanceof HTMLDialogElement)) {
         return;
       }
 
       if (!modal.open) {
-
         modal.showModal();
-
-        // Focus the first input field
         const firstInput = modal.querySelector(
           'input:not([type="hidden"]), textarea'
         );
-
         if (firstInput instanceof HTMLElement) {
           firstInput.focus();
         }
@@ -49,17 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // =====================================
-    // CLOSE QUOTE POPUP
-    // =====================================
-
     const closeButton = target.closest('[data-quote-close]');
-
     if (closeButton) {
-
       const modal = closeButton.closest('[data-quote-modal]');
-
-      // Ensure the selected element is a dialog
       if (
         modal instanceof HTMLDialogElement &&
         modal.open
@@ -69,10 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       return;
     }
-
-    // =====================================
-    // CLOSE WHEN CLICKING OUTSIDE CONTENT
-    // =====================================
 
     if (
       target instanceof HTMLDialogElement &&
@@ -92,19 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.close();
       }
     }
-
   });
 
+  reopenSubmittedQuoteModals();
+}
 
-  // =====================================
-  // REOPEN POPUP AFTER FORM SUBMISSION
-  // =====================================
-
+function reopenSubmittedQuoteModals() {
   const modals = document.querySelectorAll('[data-quote-modal]');
 
   modals.forEach(function (modal) {
-
-    // Ensure the selected element is a dialog
     if (!(modal instanceof HTMLDialogElement)) {
       return;
     }
@@ -112,24 +84,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const formState = modal.querySelector(
       '[data-quote-form-state]'
     );
-
-    // Ensure the form state is an HTML element
     if (!(formState instanceof HTMLElement)) {
       return;
     }
-
-    // Read data attributes without using dataset
     const isSuccessful =
       formState.getAttribute('data-success') === 'true';
-
     const hasErrors =
       formState.getAttribute('data-has-errors') === 'true';
-
-    // Reopen popup after successful submission or validation errors
     if ((isSuccessful || hasErrors) && !modal.open) {
       modal.showModal();
     }
-
   });
+}
 
-});
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeQuotes, { once: true });
+} else {
+  initializeQuotes();
+}

@@ -3,6 +3,7 @@
 .quotes {
   width: 100%;
   margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .quotes__trigger {
@@ -28,11 +29,19 @@
   color: #fff;
 }
 
+.quotes__trigger:focus-visible,
+.quotes__submit:focus-visible,
+.quotes__close:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+}
+
 /* Popup */
 .quotes__modal {
   width: min(520px, calc(100% - 32px));
   max-width: 520px;
   max-height: 85vh;
+  margin: auto;
   padding: 0;
   border: none;
   border-radius: 16px;
@@ -212,17 +221,29 @@
   }
 }
 
+@media screen and (min-width: 750px) {
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-/* Stack Add to Cart and Quote buttons vertically */
-/* 
-.product-details .product-form-buttons {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 12px;
+  .product-details > .group-block {
+    display: contents;
+  }
+
+  .product-details .quotes {
+    order: 10;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .product-details .quotes__trigger {
+    width: auto;
+    min-width: 240px;
+  }
+
+  .product-details .buy-buttons-block {
+    order: 11;
+  }
 }
-
-.product-details .quote-button {
-  width: 100%;
-  display: block;
-} */
