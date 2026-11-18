@@ -1,0 +1,228 @@
+
+/* Quotes button */
+.quotes {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.quotes__trigger {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border: 1px solid #000;
+  border-radius: 14px;
+  background: #fff;
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.quotes__trigger:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Popup */
+.quotes__modal {
+  width: min(520px, calc(100% - 32px));
+  max-width: 520px;
+  max-height: 85vh;
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+  color: #111;
+  overflow: auto;
+}
+
+.quotes__modal::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.quotes__modal[open] {
+  animation: quotesFadeIn 0.25s ease;
+}
+
+@keyframes quotesFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quotes__modal-content {
+  position: relative;
+  padding: 32px;
+}
+
+.quotes__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  color: #111;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.quotes__header {
+  margin-bottom: 24px;
+}
+
+.quotes__header h2 {
+  margin: 0 30px 8px 0;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.quotes__header p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Form fields */
+.quotes__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quotes__field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.quotes__field label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.quotes__field input,
+.quotes__field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.quotes__field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.quotes__field input:focus,
+.quotes__field textarea:focus {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.quotes__submit {
+  width: 100%;
+  min-height: 50px;
+  padding: 14px 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quotes__submit:hover {
+  background: #333;
+}
+
+.quotes__note {
+  margin: -5px 0 0;
+  color: #777;
+  font-size: 12px;
+  text-align: center;
+}
+
+.quotes__success {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.quotes__success h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.quotes__success p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.quotes__errors {
+  padding: 12px;
+  border: 1px solid #d93025;
+  border-radius: 8px;
+  color: #b3261e;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 600px) {
+  .quotes__modal {
+    max-height: 90vh;
+  }
+
+  .quotes__modal-content {
+    padding: 26px 20px;
+  }
+
+  .quotes__header h2 {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quotes__modal[open] {
+    animation: none;
+  }
+
+  .quotes__trigger {
+    transition: none;
+  }
+}
+
+
+/* Stack Add to Cart and Quote buttons vertically */
+/* 
+.product-details .product-form-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 12px;
+}
+
+.product-details .quote-button {
+  width: 100%;
+  display: block;
+} */

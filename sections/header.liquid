@@ -1179,12 +1179,9 @@ endcapture
     opacity: 1;
   }
 
-  @starting-style {
-    .localization-wrapper:not([hidden]) {
-      translate: 0 20px;
-      opacity: 0;
-    }
-  }
+  .localization-wrapper {
+  transition: translate 0.3s ease, opacity 0.3s ease;
+}
 
   dropdown-localization-component {
     position: relative;
