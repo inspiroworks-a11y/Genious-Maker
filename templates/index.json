@@ -389,7 +389,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<ul><li>{{ metaobjects.author[\"indranil-hazra\"].address.value }}</li></ul>",
+                "text": "<p>{{ metaobjects.author[\"indranil-hazra\"].deg.value }}</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
